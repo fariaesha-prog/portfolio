@@ -3,7 +3,7 @@
 
 import Image from 'next/image';
 import { Button } from '@heroui/react';
-import { motion } from 'framer-motion';
+import { motion, type Variants } from 'framer-motion';
 import { ArrowRight, Download, Mail } from 'lucide-react';
 import { FaGithub, FaLinkedin } from 'react-icons/fa';
 
@@ -11,7 +11,7 @@ import GridBackground from './hero/GridBackground';
 import StatCard from './hero/StatCard';
 import ScrollIndicator from './hero/ScrollIndicator';
 
-const container = {
+const container: Variants = {
   hidden: {},
   show: {
     transition: {
@@ -21,7 +21,7 @@ const container = {
   },
 };
 
-const item = {
+const item: Variants = {
   hidden: { opacity: 0, y: 24 },
   show: {
     opacity: 1,
@@ -67,12 +67,11 @@ export default function Hero() {
       >
         {/* LEFT */}
         <div>
-       
           <motion.h1
             variants={item}
             className="text-5xl md:text-6xl font-extrabold text-white leading-[1.1] mb-6"
           >
-            Hi, I'm
+            Hi, I&apos;m
             <br />
             Faria{' '}
             <span className="bg-gradient-to-r from-indigo-400 to-violet-400 bg-clip-text text-transparent">
@@ -125,23 +124,18 @@ export default function Hero() {
                   ?.scrollIntoView({ behavior: 'smooth' })
               }
               className="bg-gradient-to-r from-indigo-500 to-violet-600 text-white font-semibold px-6 h-11 rounded-xl gap-2"
-              endContent={
-                <motion.span
-                  whileHover={{ x: 3 }}
-                  className="inline-flex"
-                >
-                  <ArrowRight size={16} />
-                </motion.span>
-              }
             >
               View Projects
+              <motion.span whileHover={{ x: 3 }} className="inline-flex">
+                <ArrowRight size={16} />
+              </motion.span>
             </Button>
 
             <Button
               onPress={() => window.open('/resume.pdf', '_blank')}
               className="bg-slate-800 border border-slate-700 text-slate-200 font-medium px-6 h-11 rounded-xl gap-2"
-              startContent={<Download size={16} />}
             >
+              <Download size={16} />
               Download Resume
             </Button>
           </motion.div>
@@ -179,9 +173,7 @@ export default function Hero() {
           variants={item}
           className="flex flex-col items-center justify-center"
         >
-          {/* tightly-sized wrapper: ring + photo + cards all anchor to THIS, not a taller outer box */}
           <div className="relative w-[300px] h-[300px] md:w-[340px] md:h-[340px]">
-            {/* dashed rotating ring */}
             <motion.div
               animate={{ rotate: 360 }}
               transition={{
@@ -192,10 +184,8 @@ export default function Hero() {
               className="absolute -inset-5 md:-inset-6 rounded-full border border-dashed border-indigo-500/30"
             />
 
-            {/* glow behind photo */}
             <div className="absolute inset-0 m-auto w-[85%] h-[85%] bg-violet-600/20 rounded-full blur-[80px]" />
 
-            {/* profile photo, fills the wrapper */}
             <div className="absolute inset-0 rounded-full overflow-hidden border-2 border-slate-700">
               <Image
                 src="/profile.jpg"
@@ -207,7 +197,6 @@ export default function Hero() {
               />
             </div>
 
-            {/* stat cards now anchor to the ring itself, overlapping its edge like the Figma */}
             <StatCard
               value="10+"
               label="Projects Built"
@@ -223,7 +212,6 @@ export default function Hero() {
             />
           </div>
 
-          {/* carousel dots sit right under the wrapper now, not floating far below */}
           <div className="flex items-center gap-1.5 mt-8">
             <span className="w-1.5 h-1.5 rounded-full bg-slate-600" />
             <span className="w-4 h-1.5 rounded-full bg-violet-400" />

@@ -3,17 +3,17 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
-import { motion } from 'framer-motion';
+import { motion, type Variants } from 'framer-motion';
 import { ArrowUpRight } from 'lucide-react';
 import { FaGithub } from 'react-icons/fa';
 import { projects } from '@/lib/projects';
 
-const container = {
+const container: Variants = {
   hidden: {},
   show: { transition: { staggerChildren: 0.12, delayChildren: 0.1 } },
 };
 
-const item = {
+const item: Variants = {
   hidden: { opacity: 0, y: 24 },
   show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: 'easeOut' } },
 };
@@ -45,7 +45,7 @@ export default function Projects() {
               </span>
             </h2>
           </div>
-          <p className="text-slate-500">A few things I've built with care.</p>
+          <p className="text-slate-500">A few things I&apos;ve built with care.</p>
         </motion.div>
 
         <motion.div
@@ -79,8 +79,8 @@ export default function Projects() {
 
                 <div className="absolute top-3 right-3 flex gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
                   {project.githubUrl && (
-                    <a
-                      href={project.githubUrl}
+                    
+                     <a href={project.githubUrl}
                       target="_blank"
                       rel="noopener noreferrer"
                       onClick={(e) => e.stopPropagation()}
@@ -91,8 +91,8 @@ export default function Projects() {
                     </a>
                   )}
                   {project.liveUrl && (
-                    <a
-                      href={project.liveUrl}
+                    
+                      < a href={project.liveUrl}
                       target="_blank"
                       rel="noopener noreferrer"
                       onClick={(e) => e.stopPropagation()}

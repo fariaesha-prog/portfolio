@@ -206,14 +206,14 @@ export default function Contact() {
             />
           </div>
 
-          <Button
-            type="submit"
-            isDisabled={status === 'sending'}
-            className="w-full bg-gradient-to-r from-indigo-500 to-violet-600 text-white font-semibold h-12 rounded-xl gap-2"
-            startContent={<Send size={16} />}
-          >
-            {status === 'sending' ? 'Sending...' : 'Send Message'}
-          </Button>
+         <Button
+  type="submit"
+  isDisabled={status === 'sending'}
+  className="w-full bg-gradient-to-r from-indigo-500 to-violet-600 text-white font-semibold h-12 rounded-xl gap-2"
+>
+  <Send size={16} />
+  {status === 'sending' ? 'Sending...' : 'Send Message'}
+</Button>
 
           {status === 'sent' && (
             <p className="text-sm text-emerald-400 text-center">
