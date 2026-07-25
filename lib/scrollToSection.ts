@@ -1,0 +1,8 @@
+
+export function scrollToSection(id: string) {
+  const el = document.getElementById(id);
+  if (!el) return;
+  const yOffset = -90; // offset for sticky navbar height
+  const y = el.getBoundingClientRect().top + window.scrollY + yOffset;
+  window.scrollTo({ top: y, behavior: 'smooth' });
+}
