@@ -1,18 +1,19 @@
 // components/About.tsx
 'use client';
 
-import { motion } from 'framer-motion';
+import { motion, type Variants } from 'framer-motion';
 import { Code2, Palette, Sparkles, GraduationCap } from 'lucide-react';
 import GridBackground from './hero/GridBackground';
 import AboutStats from './about/AboutStats';
-const container = {
+
+const container: Variants = {
   hidden: {},
   show: {
     transition: { staggerChildren: 0.12, delayChildren: 0.1 },
   },
 };
 
-const item = {
+const item: Variants = {
   hidden: { opacity: 0, y: 24 },
   show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: 'easeOut' } },
 };
@@ -39,87 +40,69 @@ export default function About() {
     >
       <GridBackground />
 
-      <motion.div
-        variants={container}
-        initial="hidden"
-        whileInView="show"
-        viewport={{ once: true, amount: 0.3 }}
-        className="relative z-10 max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-16 md:gap-20 items-start"
-      >
-        
-        {/* LEFT */}
-        <div>
-          <motion.span
-            variants={item}
-            className="text-indigo-400 text-xs font-semibold tracking-[0.2em] uppercase"
-          >
-            About
-          </motion.span>
-
-          <motion.h2
-            variants={item}
-            className="text-4xl md:text-5xl font-extrabold text-white leading-[1.15] mt-4 mb-10"
-          >
-            Building at the edge of{' '}
-            <span className="bg-gradient-to-r from-violet-400 to-indigo-400 bg-clip-text text-transparent">
-              craft
-            </span>{' '}
-            and{' '}
-            <span className="bg-gradient-to-r from-indigo-400 to-violet-500 bg-clip-text text-transparent">
-              code
-            </span>
-          </motion.h2>
-
-          <motion.div
-            variants={item}
-            className="grid grid-cols-2 gap-3 max-w-sm"
-          >
-            {highlights.map(({ icon: Icon, label }) => (
-              <div
-                key={label}
-                className="flex items-center gap-3 px-4 py-3 rounded-xl bg-slate-800/60 border border-slate-700"
-              >
-                <Icon size={18} className="text-indigo-400 shrink-0" />
-                <span className="text-sm text-slate-300">{label}</span>
-              </div>
-            ))}
-          </motion.div>
-        </div>
-
-        {/* RIGHT */}
-        <div className="space-y-6">
-          {paragraphs.map((text, i) => (
-            <motion.p
-              key={i}
+      <div className="relative z-10 max-w-7xl mx-auto">
+        <motion.div
+          variants={container}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, amount: 0.3 }}
+          className="grid grid-cols-1 md:grid-cols-2 gap-16 md:gap-20 items-start"
+        >
+          {/* LEFT */}
+          <div>
+            <motion.span
               variants={item}
-              className="text-slate-400 leading-relaxed"
+              className="text-indigo-400 text-xs font-semibold tracking-[0.2em] uppercase"
             >
-              {text}
-            </motion.p>
-          ))}
-        </div>
-      </motion.div>
+              About
+            </motion.span>
 
-      <section id="about" className="relative bg-slate-900 py-24 md:py-32 px-6 md:px-16 overflow-hidden">
-  <GridBackground />
+            <motion.h2
+              variants={item}
+              className="text-4xl md:text-5xl font-extrabold text-white leading-[1.15] mt-4 mb-10"
+            >
+              Building at the edge of{' '}
+              <span className="bg-gradient-to-r from-violet-400 to-indigo-400 bg-clip-text text-transparent">
+                craft
+              </span>{' '}
+              and{' '}
+              <span className="bg-gradient-to-r from-indigo-400 to-violet-500 bg-clip-text text-transparent">
+                code
+              </span>
+            </motion.h2>
 
-  <div className="relative z-10 max-w-7xl mx-auto">
-    <motion.div
-      variants={container}
-      initial="hidden"
-      whileInView="show"
-      viewport={{ once: true, amount: 0.3 }}
-      className="grid grid-cols-1 md:grid-cols-2 gap-16 md:gap-20 items-start"
-    >
-      {/* LEFT and RIGHT columns stay exactly as they are */}
-    </motion.div>
+            <motion.div
+              variants={item}
+              className="grid grid-cols-2 gap-3 max-w-sm"
+            >
+              {highlights.map(({ icon: Icon, label }) => (
+                <div
+                  key={label}
+                  className="flex items-center gap-3 px-4 py-3 rounded-xl bg-slate-800/60 border border-slate-700"
+                >
+                  <Icon size={18} className="text-indigo-400 shrink-0" />
+                  <span className="text-sm text-slate-300">{label}</span>
+                </div>
+              ))}
+            </motion.div>
+          </div>
 
-    <AboutStats />
-  </div>
-</section>
+          {/* RIGHT */}
+          <div className="space-y-6">
+            {paragraphs.map((text, i) => (
+              <motion.p
+                key={i}
+                variants={item}
+                className="text-slate-400 leading-relaxed"
+              >
+                {text}
+              </motion.p>
+            ))}
+          </div>
+        </motion.div>
+
+        <AboutStats />
+      </div>
     </section>
-
-    
   );
-  
 }
